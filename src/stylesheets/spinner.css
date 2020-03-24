@@ -1,7 +1,9 @@
+
 .wrapper{
     position: absolute;
-    float: left;
-    margin: 140px 100px;
+    top: 30vh;
+    margin: auto;
+    left: 52%;
     transform: rotate(90deg);
 }
 

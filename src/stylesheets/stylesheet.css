@@ -1,0 +1,11 @@
+.tracker-engine{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+@media only screen and (max-width: 950px) {
+    .tracker-engine{
+        flex-direction: column;
+    }
+}
