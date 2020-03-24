@@ -5,6 +5,11 @@
     transform: rotate(90deg);
 }
 
+.inverted{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .line{
     position: absolute;
     top: 0px;

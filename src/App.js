@@ -1,5 +1,5 @@
 import React from 'react';
-//import Spinner from './components/spinner'
+import Spinner from './components/spinner/spinner'
 import Navbar from './components/navbar/navbar'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           selfies normcore gluten-free snackwave. Seitan ramps drinking vinegar
           venmo keytar, humblebrag VHS post-ironic tacos godard pour-over.
         </p>
-        
+        <Spinner/>
       </main>
     </div>
   );
