@@ -7,6 +7,7 @@
     --bg-primary: #23232e;
     --bg-secondary: #141418;
     --bg-body: #494855;
+    --bg-modal: #df49a642;
     --transition-speed: 600ms;
     --logs-color: rgb(0, 175, 9);
   }
@@ -31,6 +32,7 @@
   }
   nav.navbar {
     overflow: hidden;
+    z-index: 1000;
   }
   
   main {
@@ -78,7 +80,12 @@
     background: var(--bg-secondary);
     color: var(--text-secondary);
   }
-  
+  a.active{
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    
+  } 
   .link-text {
     display: none;
     margin-left: 1rem;
@@ -216,7 +223,7 @@
   
   .solar {
     --text-primary: #576e75;
-    --text-secondary: #35535c;
+    --text-secondary: #274149;
     --bg-primary: #fdf6e3;
     --bg-secondary: #f5e5b8;
     --bg-body: #ffeeb7;

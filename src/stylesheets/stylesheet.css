@@ -9,3 +9,56 @@
         flex-direction: column;
     }
 }
+
+#modal{
+    
+}
+
+.modal {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-modal);
+    z-index: 10;
+    transition: var(--transition-speed);
+}
+
+.modal-content{
+    background-color: var(--bg-primary);
+    border-radius: 17px;
+    opacity: 1;
+    margin: 100px auto;
+    height: 400px;
+    max-width: 647px;
+    text-align: center;
+}
+.modal-header{
+    border-radius: 17px 17px 0 0;
+    height: 60px;
+    background-color: var(--bg-secondary);
+}
+.modal h1{
+    color: var(--text-secondary);
+    letter-spacing: 0.3ch;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.modal p{
+    color: var(--text-secondary);
+}
+@media only screen and (max-width: 950px) {
+    .modal-content{
+        max-width: 60vw;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .modal p{
+        margin-top: 20px;
+    }
+}
+li a{
+    text-decoration: none;
+    outline: none; 
+}

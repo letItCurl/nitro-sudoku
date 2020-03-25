@@ -6,6 +6,7 @@ import DocsLink from './links/docsLink'
 import DarkIcon from './icons/darkIcon'
 import SunIcon from './icons/sunIcon'
 import LightIcon from './icons/lightIcon'
+import {Link, NavLink} from 'react-router-dom'
 
 import '../../stylesheets/navbar.css'
 function Navbar(){
@@ -40,20 +41,21 @@ function Navbar(){
   }
 
   return(
-      <div> 
+      <div>
+
           <nav className="navbar">
             <ul className="navbar-nav">
               <li className="logo">
-                <LogoLink/>
+                <NavLink to="/"><LogoLink/></NavLink>
               </li>
               <li className="nav-item">
-                <AboutLink/>
+                <NavLink to="/about" className="nav-link"><AboutLink /></NavLink>
               </li>
               <li className="nav-item">
-                <SolveLink/>
+                <NavLink to="/solve" className="nav-link"><SolveLink /></NavLink>
               </li>
               <li className="nav-item">
-                <DocsLink/>
+                <NavLink to="/docs" className="nav-link"><DocsLink /></NavLink>
               </li>
               <li className="nav-item" id="themeButton" onClick={toggleTheme}>
                 <div className="nav-link">
