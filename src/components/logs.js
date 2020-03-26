@@ -9,7 +9,7 @@ function Logs(){
     const [directoy, setDirectoy] = useState('/')
 
     const consoleInput = (event)=>{
-        const changes = event.currentTarget.value
+        const changes = event.currentTarget.value.toLowerCase()
         setUserInput(changes)
     }
 
@@ -80,7 +80,7 @@ function Logs(){
                     })
                 }
                 <p className="user" onKeyPress={executeCommand}>{"letItCurl@52.0.14.116:~"+directoy+"$"}
-                    <input onChange={consoleInput} type="text" value={userInput}/>
+                    <input pattern="[a-z]" onChange={consoleInput} type="text" value={userInput}/>
                 </p>
             </div>
         </div>

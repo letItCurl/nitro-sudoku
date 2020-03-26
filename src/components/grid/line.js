@@ -1,47 +1,57 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux'
 
 const Line = (props) => {
 
-    const [userNumber, setUserNumber] = useState(props.line)
-
-    function handleUserKeyPress(event){
-        var copy = []
-        event.preventDefault()
-        console.log(event.keyCode)
+    const [userLine, setUserLine] = useState(props.line)
+    function handleUserChange(){
+        //silence is gold
+    }
+    const handleUserKeyDown = (event) =>{
+        const keyPress =  event.key
+        var copy = JSON.parse(JSON.stringify(userLine))
         const index = event.target.id
-        if(event.key==="Backspace"){
-            userNumber[index] = ""
-            copy = JSON.parse(JSON.stringify(userNumber))
-            setUserNumber(copy)
-            
-        }else if(event.keyCode >= 97 && event.keyCode <= 105){
-            userNumber[index] =  event.key
-            copy = JSON.parse(JSON.stringify(userNumber))
-            setUserNumber(copy)
+        if(keyPress==="Backspace"){
+            copy[index] = ""
+            setUserLine(copy)
+        }else if(keyPress <= 9 && keyPress > 0){
+            copy[index] = event.key
+            setUserLine(copy)
         }
-       
     }
-    const dummy = ()=>{
-        console.log("You can't see this shit")
-    }
+    
     useEffect(()=>{
-        console.log("enter effect")
-        
-        return () => {
-            console.log("leaving return")
-            
+        if(props.sudoku[props.index]!=userLine){
+            props.replaceLine(userLine, props.index)
         }
-    })
-
+    }, userLine)
+    
     return (
         <section className="basic-grid">
             { 
-                userNumber.map((number,index) => {
-                return (<div className="card" onKeyDown={handleUserKeyPress} key={index}><input id={index} type="text" onChange={dummy} value={number}/></div>)
+                userLine.map((number,index) => {
+                return (
+                <div className="card" 
+                key={index} onKeyDown={handleUserKeyDown}>
+                    <input id={index} type="text" maxLength="2" onChange={handleUserChange} value={number}/>
+                    </div>)
                 })
             }
+            
         </section>
         );
 }
+
+const mapStateToProps = (state) =>{
+    return {
+      sudoku: state
+    }
+  }
+
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        replaceLine: (line, index) =>{dispatch({type: 'REPLACE_LINE', line, index})}
+    }
+}
  
-export default Line;
+export default connect(mapStateToProps,mapDispatchToProps)(Line);
