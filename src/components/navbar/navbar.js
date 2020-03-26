@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import AboutLink from './links/aboutLink'
 import LogoLink from './links/logoLink'
 import SolveLink from './links/solveLink'
