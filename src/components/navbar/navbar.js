@@ -6,6 +6,7 @@ import DocsLink from './links/docsLink'
 import DarkIcon from './icons/darkIcon'
 import SunIcon from './icons/sunIcon'
 import LightIcon from './icons/lightIcon'
+import ArrowIcon from './icons/arrowIcon'
 import {NavLink} from 'react-router-dom'
 
 import '../../stylesheets/navbar.css'
@@ -42,8 +43,7 @@ function Navbar(){
 
   return(
       <div>
-
-          <nav className="navbar">
+          <nav className="navbar" id="navbar-xl">
             <ul className="navbar-nav">
               <li className="logo">
                 <NavLink to="/"><LogoLink/></NavLink>
@@ -66,7 +66,9 @@ function Navbar(){
                 </div>
               </li>
             </ul>
+            
           </nav>
+          <div className="arrowIcon"><ArrowIcon/></div>
       </div>
   )
 }

@@ -138,25 +138,48 @@
   .navbar:hover .logo svg {
     transform: rotate(-180deg);
   }
-  
+  .arrowIcon{
+    display: none;
+  }
   /* Small screens */
   @media only screen and (max-width: 600px) {
+    .arrowIcon{
+      z-index: -900;
+      display: block;
+      position: fixed;
+      bottom: 30px;
+      margin: auto;
+      left: calc(50vw - 10px);
+      width: 20px;
+      height: 20px;
+      transition: var(--transition-speed);
+      animation: ani 1.7s infinite;
+    }
     .navbar {
       bottom: 0;
       width: 100vw;
-      height: 5rem;
+      height: 1.3rem;
+      transition: var(--transition-speed);
     }
-  
     .logo {
       display: none;
     }
-  
     .navbar-nav {
       flex-direction: row;
+      padding-top:  17px;
+      transition: var(--transition-speed);
     }
-  
     .nav-link {
       justify-content: center;
+    }
+    .navbar:hover{
+      height: 5rem;
+    }
+    .navbar-nav:hover{
+      padding-top:  0;
+    }
+    .arrowIcon:hover{
+      animation: anifast 1.7s infinite;
     }
     
     main {
@@ -174,12 +197,33 @@
       margin-bottom: 5px;
       padding-top: 0;
     }
+    @keyframes ani {
+      0% {
+        bottom: 30px;
+      }
+      50% {
+        bottom: 33px;
+      }
+      100% {
+        bottom: 30px;
+      }
+    }
+      @keyframes anifast {
+        0% {
+          bottom: 30px;
+        }
+        50% {
+          bottom: 45px;
+        }
+        100% {
+          bottom: 30px;
+        }
+    }
+    
   }
-  
+
   /* Large screens */
   @media only screen and (min-width: 600px) {
-    
-
     .navbar {
       top: 0;
       width: 5rem;

@@ -93,3 +93,6 @@
       padding-bottom: 0.2em;
    }
 }
+.grid-container{
+   background-color: var(--bg-body);
+}
