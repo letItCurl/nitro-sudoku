@@ -75,6 +75,9 @@
    .card input{
       font-size: 5.7vw;
     }
+    .basic-grid {
+      margin: 100px 100px ;
+   }
  }
  
  @media only screen and (max-width: 950px) {
@@ -82,7 +85,7 @@
       margin: auto;
       max-width: 400px;
       width: 100%;
-      
+
    }
 
    

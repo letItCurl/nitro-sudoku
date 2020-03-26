@@ -40,13 +40,16 @@
 #logs{
     overflow: hidden;
 }
+#title-sm{
+    display: none;
+}
 @media only screen and (max-width: 950px) {
     .logs-container{
         max-width: 400px;
         width: 100%;
         margin: auto;
         height: 145px;
-        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .log-text{
         font-size: 0.8em;
@@ -57,11 +60,16 @@
         max-width: 400px;
         width: 100%;
         margin: auto;
-        height: 180px;
-        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .log-text{
         font-size: 0.8em;
+    }
+    #title{
+        display: none;
+    }
+    #title-sm{
+        display: block;
     }
  }
 

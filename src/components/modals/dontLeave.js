@@ -3,16 +3,10 @@ import ReactDOM from 'react-dom'
 import {Link} from 'react-router-dom'
 import CrossIcon from './crossIcon'
 
-const Solve = (props) =>{
+const DontLeave = (props) =>{
     
-    const leaveMe = (e)=>{
-        if(e.target.className==="modal"){
-            props.history.push('/')
-        }
-    }
-
     return ReactDOM.createPortal(
-        <div className="modal" onClick={leaveMe}>
+        <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
                     <h1>solve</h1>
@@ -31,4 +25,4 @@ const Solve = (props) =>{
     )
 }
 
-export default Solve
+export default DontLeave

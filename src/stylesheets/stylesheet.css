@@ -1,12 +1,11 @@
 .tracker-engine{
-    
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 @media only screen and (max-width: 950px) {
     .tracker-engine{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
 
@@ -29,9 +28,9 @@
     background-color: var(--bg-primary);
     border-radius: 17px;
     opacity: 1;
-    margin: 100px auto;
+    margin: 100px calc(50vw - 240px + 40px);
     height: 400px;
-    max-width: 647px;
+    width: 480px;
     text-align: center;
 }
 .modal-header{
@@ -49,16 +48,39 @@
     color: var(--text-secondary);
 }
 @media only screen and (max-width: 950px) {
-    .modal-content{
-        max-width: 60vw;
-    }
+
 }
 @media only screen and (max-width: 600px) {
     .modal p{
-        margin-top: 20px;
+        margin-top: 30px;
+    }
+    .modal-content{
+        max-width: 90vw;
+        margin: 15px auto;
     }
 }
-li a{
+a{
     text-decoration: none;
     outline: none; 
+}
+
+.crossIcon svg{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    top: 280px;
+}
+
+.modal-text{
+    padding: 0 15px;
+    height: 265px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+.invisible-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+.invisible-scrollbar{
+  scrollbar-width: none;
 }

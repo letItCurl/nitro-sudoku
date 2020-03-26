@@ -12,7 +12,8 @@ import Solve from './components/modals/solve'
 
 import './stylesheets/stylesheet.css'
 
-function App() {
+function App(props) {
+
   const row1 = [6,0,7,9,0,0,2,0,3]
   const row2 = [9,0,3,4,2,0,8,6,0]
   const row3 = [0,0,0,0,8,3,0,0,1]
@@ -38,8 +39,8 @@ function App() {
       <div className="App" id="body">
         <Navbar/>
         <main>
-          <h1>Bored at work ?</h1>
-          <p>Hehe. Got Somthing for you 🎁</p>
+          <h1 id="title" >Bored at work ?</h1>
+          <p id="title">Hehe. Got Somthing for you 🎁</p>
           <div className="tracker-engine">
             <Grid sudoku={sudoku}/>
             <Logs/>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import AboutLink from './links/aboutLink'
 import LogoLink from './links/logoLink'
 import SolveLink from './links/solveLink'
@@ -6,7 +6,7 @@ import DocsLink from './links/docsLink'
 import DarkIcon from './icons/darkIcon'
 import SunIcon from './icons/sunIcon'
 import LightIcon from './icons/lightIcon'
-import {Link, NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 import '../../stylesheets/navbar.css'
 function Navbar(){
@@ -16,15 +16,15 @@ function Navbar(){
     light: "solar",
     solar: "dark"
   })
+  const [currentTheme, SetCurrentTheme] = useState('dark')
   const [hideLink, setHideLink] = useState(['block','none','none'])
   
   const toggleTheme = () =>{
-      const current = localStorage.getItem('theme');
-      const next = themeMap[current];
+      const next = themeMap[currentTheme];
       const bodyClass = document.body.classList
-      bodyClass.remove(current);
+      bodyClass.remove(currentTheme);
       bodyClass.add(next);
-      localStorage.setItem('theme', next);
+      SetCurrentTheme(next);
       switch(next){
         case 'dark':
           setHideLink(['block','none','none'])
