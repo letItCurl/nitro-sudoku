@@ -156,10 +156,10 @@
       animation: ani 1.7s infinite;
     }
     .navbar {
-      bottom: 0;
       width: 100vw;
       height: 1.3rem;
       transition: var(--transition-speed);
+      bottom: 0;
     }
     .logo {
       display: none;
@@ -179,7 +179,7 @@
       padding-top:  0;
     }
     .arrowIcon:hover{
-      animation: anifast 1.7s infinite;
+      animation: anifast 1s infinite;
     }
     
     main {

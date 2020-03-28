@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import '../stylesheets/logs.css'
+import {connect} from 'react-redux'
+import { messageService } from '../rxjs/_services';
 
-
-function Logs(){
+function Logs(props){
 
     const [userInput, setUserInput] = useState([""])
     const [shellPrompt, setShellPrompt] = useState(["waiting for ssh connection...","Logged in as letItCurl"])
@@ -55,6 +56,7 @@ function Logs(){
                 case "node engine":
                     if(directoy==="/engine/"){
                         setShellPrompt([...shellPrompt,"--- 🔥 STARTING ENGINE 🔥 ---"])
+                        streamLogs()
                     }else{
                         setShellPrompt([...shellPrompt,"nternal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
                     }
@@ -68,12 +70,38 @@ function Logs(){
         }
     }
 
+    
+        const [logs] = useState(props.sudoku.logs)
+
+        const [logsToDisplay, setLogsToDisplay] = useState([])
+
+        //can be worked out with RxJS...
+        const streamLogs = () =>{
+            logs.forEach((val,ind)=>{
+                setTimeout(() => {
+                    setLogsToDisplay([...logs.slice(0,ind),val])
+                    if(Array.isArray(val)){
+                        messageService.sendMessage([val[0],val[1],val[2]])
+                    }
+                }, 100*ind)
+            })
+        }
+
+        
+
     return(
         <div className="logs-container" id="logs-container">
             
-            <div className="log-text" id="logs" >
+            <div onClick={streamLogs} className="log-text" id="logs" >
                 {
                     shellPrompt.map((val,ind)=>{
+                        return ( 
+                                <div key={ind}>{val}</div>
+                        )
+                    })
+                }
+                {
+                    logsToDisplay.map((val,ind)=>{
                         return ( 
                                 <div key={ind}>{val}</div>
                         )
@@ -87,10 +115,10 @@ function Logs(){
     )
 }
 
-export default Logs
+const mapStateToProps = (state) =>{
+    return {
+      sudoku: state
+    }
+  }
 
-/*
-<p className="scrollThis">
-    {shellPrompt.join("\b")}
-</p>
-*/
+export default connect(mapStateToProps)(Logs);

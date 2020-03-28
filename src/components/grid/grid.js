@@ -2,19 +2,27 @@ import React from 'react'
 import '../../stylesheets/grid.css'
 import Line from './line'
 
-
 function Grid(props){
-    function blah(){
-        console.log(props.sudoku[0])
+
+    const consoleLine = ()=>{
+        console.log(props.sudoku.grid[2])
     }
+    const check = ()=>{
+        console.log(props.sudoku.checkInput(3,1))
+    }
+    const getFocus = ()=>{
+        console.log(props.sudoku.focus)
+    }
+
+    
+
     return(
         <div className="grid-container">
             {
-                props.sudoku.map((line, index)=>{
-                    return(<Line key={index} line={line} index={index}/>)
+                props.sudoku.grid.map((line, index)=>{
+                return(<Line key={index} line={line} index={index}></Line>)
                 })
             }
-           <button onClick={blah}>SUCK MY DICK</button>
         </div>
     )
 }

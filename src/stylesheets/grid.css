@@ -32,6 +32,7 @@
  .card.focus{
     background: #277a2083;
  }
+ 
 .basic-grid {
     display: grid;
     gap: 0.2rem;
