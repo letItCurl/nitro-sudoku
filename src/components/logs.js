@@ -118,8 +118,9 @@ function Logs(props){
                         messageService1.sendMessage([val[0],val[1],val[2]])
                     }else if(val==="--- FINISHED ! ---"){
                         messageService1.sendMessage("--- FINISHED ! ---")
+                        setLock(false)
                     }
-                }, 98*ind)
+                }, 10*ind)
             })
         }
 
