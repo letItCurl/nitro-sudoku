@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import '../stylesheets/logs.css'
 import {connect} from 'react-redux'
 import { messageService1, messageService2 } from '../rxjs/_services';
+import {checkInputAction} from '../actions/sudokuActions'
 
 function Logs(props){
 
@@ -17,9 +18,11 @@ function Logs(props){
     useEffect(()=>{
         var subscription = messageService2.getMessage().subscribe(message => {
             if (message) {setShellPrompt([...shellPrompt,...message])}
+            if (message==="--> SUDOKU VALIDATED ✅"){streamLogs()}
         });
         return () =>{
             subscription.unsubscribe();
+            
         }
     })
 
@@ -57,17 +60,31 @@ function Logs(props){
                         setShellPrompt([...shellPrompt,"you are already in engine directory"])
                     }
                     break;
+                case "cd engine/":
+                        if(directoy==="/"){
+                            setDirectoy(directoy+"engine/")
+                            setShellPrompt([...shellPrompt,"entered in directory: ~/engine/"])
+                        }else{
+                            setShellPrompt([...shellPrompt,"you are already in engine directory"])
+                        }
+                        break;
                 case "cat readme.txt":
                     if(directoy==="/engine/"){
-                        setShellPrompt([...shellPrompt,"Head up!!!! you are almost there 🎯 to trigger the sudoku engine, you need to run the file node.js. type: node engine"])
+                        setShellPrompt([...shellPrompt,"Head up!!!! you are almost there 🎯 to trigger the sudoku engine, you need to run the file node.js. type this commande: node engine"])
                     }
                     break;
                 case "node engine":
                     if(directoy==="/engine/"){
-                        setShellPrompt([...shellPrompt,"--- 🔥 STARTING ENGINE 🔥 ---"])
-                        streamLogs()
+                        props.checkInputAction(props.sudoku.grid)
                     }else{
-                        setShellPrompt([...shellPrompt,"nternal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
+                        setShellPrompt([...shellPrompt,"internal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
+                    }
+                    break;
+                case "node engine.js":
+                    if(directoy==="/engine/"){
+                        props.checkInputAction(props.sudoku.grid)
+                    }else{
+                        setShellPrompt([...shellPrompt,"internal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
                     }
                     break;
                 case "node -v":
@@ -79,17 +96,11 @@ function Logs(props){
         }
     }
 
-    
-        const [logs] = useState(props.sudoku.logs)
-
-        const [logsToDisplay, setLogsToDisplay] = useState([])
-
         //can be worked out with RxJS...
         const streamLogs = () =>{
-            logs.push("--- FINISHED ! ---")
-            logs.forEach((val,ind)=>{
+            props.sudoku.logs.forEach((val,ind)=>{
                 setTimeout(() => {
-                    setShellPrompt([...logs.slice(0,ind),val])
+                    setShellPrompt([...shellPrompt,...props.sudoku.logs.slice(0,ind),val])
                     if(Array.isArray(val)){
                         messageService1.sendMessage([val[0],val[1],val[2]])
                     }else if(val==="--- FINISHED ! ---"){
@@ -104,16 +115,9 @@ function Logs(props){
     return(
         <div className="logs-container" id="logs-container">
             
-            <div onClick={streamLogs} className="log-text" id="logs" >
+            <div className="log-text" id="logs" >
                 {
                     shellPrompt.map((val,ind)=>{
-                        return ( 
-                                <div key={ind}>{val}</div>
-                        )
-                    })
-                }
-                {
-                    logsToDisplay.map((val,ind)=>{
                         return ( 
                                 <div key={ind}>{val}</div>
                         )
@@ -132,5 +136,20 @@ const mapStateToProps = (state) =>{
       sudoku: state
     }
   }
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        checkInputAction: (grid)=> {dispatch(checkInputAction(grid))}
+    }
+  }
 
-export default connect(mapStateToProps)(Logs);
+export default connect(mapStateToProps,mapDispatchToProps)(Logs);
+
+/*
+{
+                    logsToDisplay.map((val,ind)=>{
+                        return ( 
+                                <div key={ind}>{val}</div>
+                        )
+                    })
+                }
+*/

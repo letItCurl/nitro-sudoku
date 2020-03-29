@@ -42,7 +42,6 @@ const Line = (props) => {
 
     useEffect(()=>{
         var subscription = messageService1.getMessage().subscribe(message => {
-            console.log(message.length)
             if (message.length===3) {setLockInput(true);setFocus(message);displayCrossAndMark(message)}
             else{setLockInput(false);console.log("--- FINISHED ! ---")}
         });
@@ -55,7 +54,6 @@ const Line = (props) => {
     const displayCrossAndMark = (focus) =>{
         const currentLine = document.getElementsByClassName("basic-grid")[props.index].children
         props.setSudokuNumber(focus[0],focus[1],focus[2])
-        //setUserLine(props.sudoku.grid[focus[1]])
         //focus the row
         if(focus[1]==props.index){
             for(let number of currentLine){

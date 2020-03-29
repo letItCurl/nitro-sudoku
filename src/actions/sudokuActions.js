@@ -5,3 +5,7 @@ export const replaceLineAction = (line, x, y) =>{
 export const setSudokuNumberAction = (x, y, val) =>{
     return{type: 'SET_SUDOKU_NUMBER', x, y, val}
 }
+
+export const checkInputAction = (grid) =>{
+    return{type: 'CHECK_INPUT', grid}
+}

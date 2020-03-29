@@ -5,7 +5,7 @@ import Line from './line'
 function Grid(props){
 
     const consoleLine = ()=>{
-        console.log(props.sudoku.grid[1])
+        console.log(props.sudoku.grid[0])
     }
     const check = ()=>{
         console.log(props.sudoku.checkInput(3,1))
@@ -23,6 +23,7 @@ function Grid(props){
                 return(<Line key={index} line={line} index={index}></Line>)
                 })
             }
+            <button onClick={consoleLine}>test</button>
         </div>
     )
 }
