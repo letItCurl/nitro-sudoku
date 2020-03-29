@@ -23,7 +23,6 @@ function Grid(props){
                 return(<Line key={index} line={line} index={index}></Line>)
                 })
             }
-            <button onClick={consoleLine}>test</button>
         </div>
     )
 }
