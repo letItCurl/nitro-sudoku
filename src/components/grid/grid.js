@@ -5,7 +5,7 @@ import Line from './line'
 function Grid(props){
 
     const consoleLine = ()=>{
-        console.log(props.sudoku.grid[2])
+        console.log(props.sudoku.grid[1])
     }
     const check = ()=>{
         console.log(props.sudoku.checkInput(3,1))

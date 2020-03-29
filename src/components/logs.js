@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../stylesheets/logs.css'
 import {connect} from 'react-redux'
-import { messageService } from '../rxjs/_services';
+import { messageService1, messageService2 } from '../rxjs/_services';
 
 function Logs(props){
 
@@ -13,6 +13,15 @@ function Logs(props){
         const changes = event.currentTarget.value.toLowerCase()
         setUserInput(changes)
     }
+
+    useEffect(()=>{
+        var subscription = messageService2.getMessage().subscribe(message => {
+            if (message) {setShellPrompt([...shellPrompt,...message])}
+        });
+        return () =>{
+            subscription.unsubscribe();
+        }
+    })
 
     const executeCommand = (e) => {
         if(e.key==="Enter"){
@@ -77,13 +86,16 @@ function Logs(props){
 
         //can be worked out with RxJS...
         const streamLogs = () =>{
+            logs.push("--- FINISHED ! ---")
             logs.forEach((val,ind)=>{
                 setTimeout(() => {
-                    setLogsToDisplay([...logs.slice(0,ind),val])
+                    setShellPrompt([...logs.slice(0,ind),val])
                     if(Array.isArray(val)){
-                        messageService.sendMessage([val[0],val[1],val[2]])
+                        messageService1.sendMessage([val[0],val[1],val[2]])
+                    }else if(val==="--- FINISHED ! ---"){
+                        messageService1.sendMessage("--- FINISHED ! ---")
                     }
-                }, 100*ind)
+                }, 110*ind)
             })
         }
 

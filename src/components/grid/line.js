@@ -1,21 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux'
-import  {replaceLineAction} from '../../actions/sudokuActions'
-import { messageService } from '../../rxjs/_services'
+import  {replaceLineAction, setSudokuNumberAction} from '../../actions/sudokuActions'
+import { messageService1 } from '../../rxjs/_services'
 
 const Line = (props) => {
 
     const [userLine, setUserLine] = useState(props.line)
+    const [lockInput, setLockInput] = useState(false)
     
     function handleUserChange(event){
         const str = event.target.value
         const strLength = str.length
         const lastLetter =  str[strLength-1]
         var copy = JSON.parse(JSON.stringify(userLine))
-        const index = event.target.id
+        const index = event.target.id // y
         if(lastLetter <= 9 && lastLetter > 0){
             copy[index] = parseInt(lastLetter, 10)
-            props.replaceLine(copy, props.index)
+            props.replaceLine(copy, parseInt(index, 10), props.index)
             setUserLine(copy)
         }
     }
@@ -26,7 +27,7 @@ const Line = (props) => {
         const index = event.target.id
         if(keyPress==="Backspace"){
             copy[index] = 0
-            props.replaceLine(copy, props.index)
+            props.replaceLine(copy, parseInt(index, 10), props.index)
             setUserLine(copy)
         }
     }
@@ -40,8 +41,10 @@ const Line = (props) => {
     const [focus, setFocus] = useState([])
 
     useEffect(()=>{
-        var subscription = messageService.getMessage().subscribe(message => {
-            if (message.join()!==focus.join()) {setFocus(message);displayCrossAndMark(message)}else{setFocus([])}
+        var subscription = messageService1.getMessage().subscribe(message => {
+            console.log(message.length)
+            if (message.length===3) {setLockInput(true);setFocus(message);displayCrossAndMark(message)}
+            else{setLockInput(false);console.log("--- FINISHED ! ---")}
         });
         return () =>{
             subscription.unsubscribe();
@@ -51,6 +54,8 @@ const Line = (props) => {
 
     const displayCrossAndMark = (focus) =>{
         const currentLine = document.getElementsByClassName("basic-grid")[props.index].children
+        props.setSudokuNumber(focus[0],focus[1],focus[2])
+        //setUserLine(props.sudoku.grid[focus[1]])
         //focus the row
         if(focus[1]==props.index){
             for(let number of currentLine){
@@ -61,8 +66,9 @@ const Line = (props) => {
             }
 
             //set it to done
-            for(let number of currentLine){
+            for(let number of currentLine){ 
                 if(number.id==focus[0]){
+                    number.getElementsByTagName('input')[0].value = focus[2]
                     number.classList.add('done')     
                 }
             }
@@ -76,8 +82,6 @@ const Line = (props) => {
                 }, 700)
             }
         }
-        
-
     }
     
     return (
@@ -87,13 +91,13 @@ const Line = (props) => {
                     if(number===0){
                         return (
                             <div className="card" key={index} id={index}  onKeyDown={handleUserKeyDown}>
-                                <input id={index} type="text" onClick={handleOnFocus} onChange={handleUserChange} value=""/>
+                                <input id={index} type="text" onClick={handleOnFocus} onChange={handleUserChange} disabled={lockInput}  value=""/>
                             </div>)
                         
                     }else{
                         return (
                             <div className="card" key={index} id={index}  onKeyDown={handleUserKeyDown}>
-                                <input id={index} type="text" onClick={handleOnFocus} onChange={handleUserChange} value={number}/>
+                                <input id={index} type="text" onClick={handleOnFocus} onChange={handleUserChange} disabled={lockInput} value={number}/>
                             </div>)
                     }
                 
@@ -113,7 +117,8 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        replaceLine: (line, index) =>{dispatch(replaceLineAction(line,index))}
+        replaceLine: (line, x, y) =>{dispatch(replaceLineAction(line,x,y))},
+        setSudokuNumber: (x, y, val) =>{dispatch(setSudokuNumberAction(x, y, val))}
     }
 }
  
