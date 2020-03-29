@@ -43,7 +43,7 @@ const Line = (props) => {
             if (message.length===3) {setLockInput(true);displayCrossAndMark(message)}
             else{setLockInput(false);messageService2.sendMessage("UNLOCK")}
             if(message==="triggerRender"){setUserLine([0,0,0,0,0,0,0,0,0])}
-            if(message==="triggerUpdate"){setUserLine(props.line)}
+            if(message==="triggerUpdate"){setUserLine(props.sudoku.grid[props.index])}
         });
         return () =>{
             subscription.unsubscribe();
@@ -57,9 +57,9 @@ const Line = (props) => {
         //focus the row
         if(focus[1]==props.index){
             for(let number of currentLine){
-                number.classList.add('focus')
+                //number.classList.add('focus')
                 setTimeout(()=>{
-                    number.classList.remove('focus')
+                    //number.classList.remove('focus')
                 }, 700)
             }
 
@@ -67,16 +67,20 @@ const Line = (props) => {
             for(let number of currentLine){ 
                 if(number.id==focus[0]){
                     number.getElementsByTagName('input')[0].value = focus[2]
-                    number.classList.add('done')     
+                    //number.classList.add('done')
+                    number.classList.add('focus')
+                    setTimeout(()=>{
+                        number.classList.remove('focus')
+                    }, 700)     
                 }
             }
         }
         //focus the columns
         for(let number of currentLine){
             if(number.id==focus[0]){
-                number.classList.add('focus')
+                //number.classList.add('focus')
                 setTimeout(()=>{
-                    number.classList.remove('focus')
+                    //number.classList.remove('focus')
                 }, 700)
             }
         }

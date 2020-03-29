@@ -19,8 +19,9 @@ function Logs(props){
     useEffect(()=>{
         var subscription = messageService2.getMessage().subscribe(message => {
             if (Array.isArray(message)) {setShellPrompt([...shellPrompt,...message])}
-            if (message==="--> SUDOKU VALIDATED ✅"){streamLogs()}
-            if (message==="UNLOCK"){setLock(false)}
+            else if (message==="--> SUDOKU VALIDATED ✅"){setLock(true);streamLogs()}
+            else if (message==="UNLOCK_CONSOLE"){setLock(false)}
+            
         });
         return () =>{
             subscription.unsubscribe();
@@ -78,7 +79,6 @@ function Logs(props){
                 case "node engine":
                     if(directoy==="/engine/"){
                         props.checkInputAction(props.sudoku.grid)
-                        setLock(true)
                     }else{
                         setShellPrompt([...shellPrompt,"internal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
                     }
@@ -86,7 +86,7 @@ function Logs(props){
                 case "node engine.js":
                     if(directoy==="/engine/"){
                         props.checkInputAction(props.sudoku.grid)
-                        setLock(true)
+                        
                     }else{
                         setShellPrompt([...shellPrompt,"internal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
                     }
@@ -119,7 +119,7 @@ function Logs(props){
                     }else if(val==="--- FINISHED ! ---"){
                         messageService1.sendMessage("--- FINISHED ! ---")
                     }
-                }, 20*ind)
+                }, 98*ind)
             })
         }
 

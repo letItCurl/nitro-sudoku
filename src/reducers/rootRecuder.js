@@ -27,6 +27,7 @@ const rootReducer = (state = sudoku, action) =>{
       const engineChecker = new Engine(newSudoku, toolbox)
       if(!engineChecker.solveAll()){
         messageService2.sendMessage(engineChecker.errors)
+        messageService2.sendMessage("UNLOCK_CONSOLE")
       }else{
         state.logs = engineChecker.logs
         state.logs.unshift("--- 🔥 STARTING ENGINE 🔥 ---")
