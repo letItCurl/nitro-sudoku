@@ -1,14 +1,12 @@
-import {grid, Engine, Sudoku, ToolBox} from 'sudoku-solver-engine'
-import { messageService2 } from '../rxjs/_services';
+import {grid, Engine, Sudoku, ToolBox, gridClear} from 'sudoku-solver-engine'
+import { messageService2, messageService1 } from '../rxjs/_services';
+
+
 
 const toolbox = new ToolBox()
 var grid2 = toolbox.returnData(grid)
 const sudoku = new Sudoku(grid2)
-const sudoku2 = new Sudoku(grid)
-const engine = new Engine(sudoku2, toolbox)
-/*
-engine.solveAll()
-*/
+
 sudoku.logs = []
 
 const rootReducer = (state = sudoku, action) =>{
@@ -27,21 +25,29 @@ const rootReducer = (state = sudoku, action) =>{
       var newGrid = toolbox.returnData(action.grid)
       const newSudoku = new Sudoku(newGrid)
       const engineChecker = new Engine(newSudoku, toolbox)
-      
       if(!engineChecker.solveAll()){
-        messageService2.sendMessage(engineChecker.solveAll().errors)
+        messageService2.sendMessage(engineChecker.errors)
       }else{
         state.logs = engineChecker.logs
         state.logs.unshift("--- 🔥 STARTING ENGINE 🔥 ---")
         state.logs.unshift("--> SUDOKU VALIDATED ✅")
         state.logs.push("--- FINISHED ! ---")
-
         messageService2.sendMessage("--> SUDOKU VALIDATED ✅")
       }
       return state
       
     case 'SET_SUDOKU_NUMBER':
       state.grid[action.y][action.x] = action.val
+      return state
+    case 'RESET_DATA':
+      state.logs = []
+      state.grid = toolbox.returnData(grid)
+      messageService1.sendMessage("triggerUpdate")
+      return state
+    case 'CLEAR_DATA':
+      state.logs = []
+      state.grid = toolbox.returnData(gridClear)
+      messageService1.sendMessage("triggerRender")
       return state
     default:
       return state

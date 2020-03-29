@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux'
 import  {replaceLineAction, setSudokuNumberAction} from '../../actions/sudokuActions'
-import { messageService1 } from '../../rxjs/_services'
+import { messageService1,messageService2 } from '../../rxjs/_services'
 
 const Line = (props) => {
 
@@ -43,7 +43,9 @@ const Line = (props) => {
     useEffect(()=>{
         var subscription = messageService1.getMessage().subscribe(message => {
             if (message.length===3) {setLockInput(true);setFocus(message);displayCrossAndMark(message)}
-            else{setLockInput(false);console.log("--- FINISHED ! ---")}
+            else{setLockInput(false);messageService2.sendMessage("UNLOCK")}
+            if(message==="triggerRender"){setUserLine([0,0,0,0,0,0,0,0,0])}
+            if(message==="triggerUpdate"){setUserLine(props.line)}
         });
         return () =>{
             subscription.unsubscribe();

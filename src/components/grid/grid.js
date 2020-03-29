@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../stylesheets/grid.css'
 import Line from './line'
 
@@ -13,9 +13,9 @@ function Grid(props){
     const getFocus = ()=>{
         console.log(props.sudoku.focus)
     }
-
-    
-
+    useEffect(()=>{
+        console.log('YAYAYA')
+    })
     return(
         <div className="grid-container">
             {
@@ -23,6 +23,7 @@ function Grid(props){
                 return(<Line key={index} line={line} index={index}></Line>)
                 })
             }
+            <button onClick={consoleLine}></button>
         </div>
     )
 }

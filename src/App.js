@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import Navbar from './components/navbar/navbar'
@@ -13,7 +13,9 @@ import {connect} from 'react-redux'
 
 import './stylesheets/stylesheet.css'
 
+
 function App({state}) {
+
   return (
     <BrowserRouter>
       <Route path='/about' component={About}/>
