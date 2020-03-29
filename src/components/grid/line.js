@@ -38,11 +38,9 @@ const Line = (props) => {
         event.target.value = val
     }
 
-    const [focus, setFocus] = useState([])
-
     useEffect(()=>{
         var subscription = messageService1.getMessage().subscribe(message => {
-            if (message.length===3) {setLockInput(true);setFocus(message);displayCrossAndMark(message)}
+            if (message.length===3) {setLockInput(true);displayCrossAndMark(message)}
             else{setLockInput(false);messageService2.sendMessage("UNLOCK")}
             if(message==="triggerRender"){setUserLine([0,0,0,0,0,0,0,0,0])}
             if(message==="triggerUpdate"){setUserLine(props.line)}
