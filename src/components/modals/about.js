@@ -5,11 +5,14 @@ import CrossIcon from './crossIcon'
 
 const About = (props) =>{
 
+    
+
     const leaveMe = (e)=>{
         if(e.target.className==="modal"){
             props.history.push('/')
         }
     }
+
 
     return ReactDOM.createPortal(
         <div className="modal" onClick={leaveMe}>
@@ -33,7 +36,7 @@ const About = (props) =>{
                         <a className="out-link" href="www.linkedin.com/in/roland-lopez-developer"><p>Feel free to speak with me if you have any question ;)</p></a>
                     </div>
                 </div>
-                <Link to="/" className="crossIcon" ><CrossIcon /></Link> 
+                <Link to="/"className="crossIcon"><CrossIcon /></Link> 
             </div>
         </div>,
         document.querySelector('#modal')

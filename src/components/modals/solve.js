@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import {Link} from 'react-router-dom'
 import CrossIcon from './crossIcon'
@@ -10,6 +10,14 @@ const Solve = (props) =>{
             props.history.push('/')
         }
     }
+    const [link, setLink] = useState(false)
+    useEffect(()=>{
+        if(localStorage.getItem('sudoku-solve')==='solve'){
+            setLink(true)
+        }else{
+            localStorage.setItem('sudoku-solve','solve')
+        }
+    })
 
     return ReactDOM.createPortal(
         <div className="modal" onClick={leaveMe}>
@@ -34,7 +42,11 @@ const Solve = (props) =>{
                         <h4>All these pop-ups can be found in the navigation bar, check-it out there is a surprise ;)</h4>
                     </div>
                 </div>
-                <Link to="/" className="crossIcon" ><CrossIcon /></Link> 
+                {   (()=>{if(link){
+                        return <Link to="/"className="crossIcon"><CrossIcon /></Link> 
+                            }      
+                        })()        
+                }
             </div>  
             
         </div>,

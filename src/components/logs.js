@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import '../stylesheets/logs.css'
 import {connect} from 'react-redux'
-import { messageService1, messageService2 } from '../rxjs/_services';
+import { messageService1, messageService2,messageLogsToContent} from '../rxjs/_services';
 import {checkInputAction} from '../actions/sudokuActions'
 
 function Logs(props){
@@ -20,12 +20,10 @@ function Logs(props){
         var subscription = messageService2.getMessage().subscribe(message => {
             if (Array.isArray(message)) {setShellPrompt([...shellPrompt,...message])}
             else if (message==="--> SUDOKU VALIDATED ✅"){setLock(true);streamLogs()}
-            else if (message==="UNLOCK_CONSOLE"){setLock(false)}
-            
+            else if (message==="UNLOCK_CONSOLE"){setLock(false)}    
         });
         return () =>{
             subscription.unsubscribe();
-            
         }
     })
 
@@ -130,6 +128,9 @@ function Logs(props){
                     }else if(val==="--- FINISHED ! ---"){
                         messageService1.sendMessage("--- FINISHED ! ---")
                         setLock(false)
+                        setTimeout(()=>{
+                            messageLogsToContent.sendMessage("SHOW-FINAL")
+                        },1500) 
                     }
                 }, 10*ind)
             })

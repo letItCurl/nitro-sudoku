@@ -160,3 +160,7 @@ a{
       text-decoration: underline;
       text-decoration-color: red;
   }
+
+  .display-none{
+      display: none;
+  }

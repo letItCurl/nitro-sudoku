@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {messageLogsToContent} from '../rxjs/_services';
 
 import Navbar from './navbar/navbar'
 import Grid from './grid/grid'
@@ -11,11 +12,18 @@ function Content(props) {
     const [video, setVideo ] = useState(localStorage.getItem('sudoku-welcome')) 
 
     useEffect(()=>{
+      var subscription = messageLogsToContent.getMessage().subscribe(message => {
+        if (message==="SHOW-FINAL"){props.history.push('/conclusion')}
+         
+      });
         if(video===null){
             localStorage.setItem('sudoku-welcome', 'done');
             setVideo(localStorage.getItem('sudoku-welcome'))
             props.history.push('/welcome')
         }
+        return () =>{
+          subscription.unsubscribe();
+      }
     })
 
     const whatisthis = (e)=>{

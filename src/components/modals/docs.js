@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import CrossIcon from './crossIcon'
 import {Link} from 'react-router-dom'
@@ -10,11 +10,15 @@ const Docs = (props) =>{
             props.history.push('/')
         }
     }
-
+    const [link, setLink] = useState(false)
     useEffect(()=>{
         localStorage.setItem('sudoku-dontleave','dontleave')
+        if(localStorage.getItem('sudoku-docs')==='done'){
+            setLink(true)
+        }else{
+            localStorage.setItem('sudoku-docs','done')
+        }
     })
-
     return ReactDOM.createPortal(
         <div className="modal" onClick={leaveMe}>
             <div className="modal-content">
@@ -41,7 +45,11 @@ const Docs = (props) =>{
                         <p>Good luck!</p>
                     </div>
                 </div>
-                <Link to="/" className="crossIcon" ><CrossIcon /></Link>
+                {   (()=>{if(link){
+                        return <Link to="/"className="crossIcon"><CrossIcon /></Link> 
+                            }      
+                        })()        
+                }
             </div>
             
         </div>,
