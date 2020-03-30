@@ -9,7 +9,9 @@
     }
 }
 
-
+#modal{
+    transition: var(--transition-speed);
+}
 .modal {
     height: 100%;
     width: 100%;
@@ -59,6 +61,7 @@
 a{
     text-decoration: none;
     outline: none; 
+    color: inherit;
 }
 
 .crossIcon svg{
@@ -81,3 +84,79 @@ a{
 .invisible-scrollbar{
   scrollbar-width: none;
 }
+.welcome-video{
+    width: 100%;
+    padding-top: 20px;
+    border-radius: 0 0 17px 17px;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+}
+.video-content{
+    height: 200px;
+}
+#skip{
+    z-index: 10;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    color: var(--text-secondary);
+    background-color: rgba(194, 194, 194, 0.123);
+    width: 70px;
+    height: 25px;
+    margin: auto;
+    border-radius: 3px;
+    transition: var(--transition-speed);
+}
+.invisible{
+    opacity: 0;
+}
+.p-0{
+    margin: 15px;
+}
+#logs-show{
+    position: relative;
+    width: 250px;
+    margin: auto;
+}
+#logs-show .user{
+    color: var(--logs-color);
+}
+
+#logs-show input{
+    background-color: rgba(255, 255, 255, 0.075);
+    border-radius: 4px;
+}
+.modal-text p{
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+.customized-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: var(--bg-modal);
+    border-radius: 5px;
+  }
+  
+  /* Add a thumb */
+  .customized-scrollbar::-webkit-scrollbar-thumb {
+      background: #df49a6; 
+      border-radius: 5px;
+  }
+  h2{
+    color: var(--text-secondary);
+  }
+  h3{
+    color: var(--text-secondary);
+  }
+  h4{
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: var(--text-secondary);
+  }
+
+  .out-link{
+      text-decoration: underline;
+      text-decoration-color: red;
+  }

@@ -1,45 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 
-import Navbar from './components/navbar/navbar'
-import Grid from './components/grid/grid'
-import Logs from './components/logs'
+import Content from './components/content'
 
 import About from './components/modals/about'
 import Docs from './components/modals/docs'
 import Solve from './components/modals/solve'
+import Welcome from './components/modals/welcome'
+import DontLeave from './components/modals/dontLeave'
 
-import {connect} from 'react-redux'
 
 import './stylesheets/stylesheet.css'
 
-
-function App({state}) {
-
+function App() {
+  useEffect(()=>{
+    localStorage.removeItem('sudoku-dontleave');
+  })
+  
   return (
     <BrowserRouter>
-      <Route path='/about' component={About}/>
-      <Route path='/docs' component={Docs}/>
-      <Route path='/solve' component={Solve}/>
-      <div className="App" id="body">
-        <Navbar/>
-        <main>
-          <h1 id="title" >Bored at work ?</h1>
-          <p id="title">Hehe. Got Somthing for you 🎁</p>
-          <div className="tracker-engine">
-            <Grid sudoku={state}/>
-            <Logs/>
-          </div>
-        </main>
-      </div>
+        <Route path='/about' component={About}/>
+        <Route path='/docs' component={Docs}/>
+        <Route path='/solve' component={Solve}/>
+        <Route path='/welcome' component={Welcome}/>
+        <Route path='/dontleave' component={DontLeave}/>
+        <Route path='/' component={Content}/>
     </BrowserRouter>
   );
 }
 
-const mapStateToProps = (state) =>{
-  return {
-    state: state
-  }
-}
+export default App;
 
-export default connect(mapStateToProps)(App);
+

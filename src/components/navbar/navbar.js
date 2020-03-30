@@ -10,7 +10,7 @@ import ArrowIcon from './icons/arrowIcon'
 import {NavLink} from 'react-router-dom'
 
 import '../../stylesheets/navbar.css'
-function Navbar(){
+function Navbar(props){
   
   const [themeMap] = useState({
     dark: "light",
@@ -40,7 +40,7 @@ function Navbar(){
           setHideLink(['block','none','none'])
       }
   }
-
+  
   return(
       <div>
           <nav className="navbar" id="navbar-xl">
