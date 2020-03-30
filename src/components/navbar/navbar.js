@@ -79,7 +79,7 @@ function Navbar(props){
             </ul>
             
           </nav>
-          <div className="arrowIcon"><ArrowIcon/></div>
+          
       </div>
   )
 }

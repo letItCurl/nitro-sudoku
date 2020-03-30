@@ -45,6 +45,7 @@
 }
 .modal p{
     color: var(--text-secondary);
+    
 }
 @media only screen and (max-width: 950px) {
 
@@ -53,9 +54,12 @@
     .modal p{
         margin-top: 30px;
     }
+    .modal h1{
+        margin-bottom: 17px;
+    }
     .modal-content{
         max-width: 90vw;
-        margin: 15px auto;
+        margin: 110px auto;
     }
 }
 a{

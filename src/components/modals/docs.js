@@ -42,7 +42,7 @@ const Docs = (props) =>{
                         <h4>To read a file, type:</h4>
                         <h4>cat [file name]</h4>
                         <p>pro tip: don't forget the extention of the file (the .txt)</p>
-                        <Link onClick={setItDone}  to="/about" className="crossIcon" ><h3>~>More info in the about page.</h3></Link>
+                        <Link onClick={setItDone}  to="/about" className="crossIcon" ><h3>~>More info in the about page.</h3><h3>(click here)</h3></Link>
                         <p>Good luck!</p>
                     </div>
                 </div>
