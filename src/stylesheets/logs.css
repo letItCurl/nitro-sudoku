@@ -37,11 +37,12 @@
     margin: 0;
     padding: 0;
 }
-#logs{
-    overflow: hidden;
-}
+
 #title-sm{
     display: none;
+}
+#omg{
+    max-height: 400px;
 }
 @media only screen and (max-width: 950px) {
     .logs-container{
@@ -66,6 +67,7 @@
     .log-text{
         font-size: 0.8em;
     }
+    
     #title{
         display: none;
     }

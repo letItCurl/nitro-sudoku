@@ -3,6 +3,8 @@ import '../stylesheets/logs.css'
 import {connect} from 'react-redux'
 import { messageService1, messageService2,messageLogsToContent} from '../rxjs/_services';
 import {checkInputAction} from '../actions/sudokuActions'
+//import 'react-perfect-scrollbar/dist/css/styles.css';
+//import PerfectScrollbar from 'react-perfect-scrollbar'
 
 function Logs(props){
 
@@ -143,8 +145,8 @@ function Logs(props){
 
     return(
         <div className="logs-container" id="logs-container">
-            
-            <div className="log-text" id="logs" >
+       
+            <div className="log-text" id="logs">
                 {
                     shellPrompt.map((val,ind)=>{
                         return ( 
@@ -152,10 +154,11 @@ function Logs(props){
                         )
                     })
                 }
-                <p className="user" onKeyPress={executeCommand}>{"letItCurl@52.0.14.116:~"+directoy+"$"}
+                <p className="user"  onKeyPress={executeCommand}>{"letItCurl@52.0.14.116:~"+directoy+"$"}
                     <input pattern="[a-z]" onChange={consoleInput} type="text" disabled={lock} value={userInput}/>
                 </p>
             </div>
+    
         </div>
     )
 }
