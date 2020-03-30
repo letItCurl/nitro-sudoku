@@ -13,7 +13,10 @@ function Content(props) {
 
     useEffect(()=>{
       var subscription = messageLogsToContent.getMessage().subscribe(message => {
-        if (message==="SHOW-FINAL"){props.history.push('/conclusion')}
+        if (message==="SHOW-FINAL"&&localStorage.getItem('sudoku-conclusion')!=='done')
+        {props.history.push('/conclusion')
+        localStorage.setItem('sudoku-conclusion', 'done')
+      }
          
       });
         if(video===null){

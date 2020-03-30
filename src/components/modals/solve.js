@@ -6,18 +6,19 @@ import CrossIcon from './crossIcon'
 const Solve = (props) =>{
     
     const leaveMe = (e)=>{
-        if(e.target.className==="modal"){
+        if(e.target.className==="modal"&&localStorage.getItem('sudoku-solve')==='done'){
             props.history.push('/')
         }
     }
     const [link, setLink] = useState(false)
     useEffect(()=>{
-        if(localStorage.getItem('sudoku-solve')==='solve'){
+        if(localStorage.getItem('sudoku-solve')==='done'){
             setLink(true)
-        }else{
-            localStorage.setItem('sudoku-solve','solve')
         }
     })
+    const setItDone = ()=>{
+        localStorage.setItem('sudoku-solve','done')
+    }
 
     return ReactDOM.createPortal(
         <div className="modal" onClick={leaveMe}>
@@ -38,7 +39,7 @@ const Solve = (props) =>{
                         <p>You thougth that this would be easy as a button click ?! hell no!</p>
                         <h4>This time, I want you, to get hand on this an try to understand what i'm doing all day behind my screen.</h4>
                         <p>This journey start with, docs, yhea. Read it carfully, all info is there.</p>
-                        <Link to="/docs"><h2>~>Go to docs !</h2></Link>
+                        <Link to="/docs" onClick={setItDone}><h2>~>Go to docs !</h2></Link>
                         <h4>All these pop-ups can be found in the navigation bar, check-it out there is a surprise ;)</h4>
                     </div>
                 </div>

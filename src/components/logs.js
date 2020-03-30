@@ -132,7 +132,7 @@ function Logs(props){
                             messageLogsToContent.sendMessage("SHOW-FINAL")
                         },1500) 
                     }
-                }, 10*ind)
+                }, 98*ind)
             })
         }
 

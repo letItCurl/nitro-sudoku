@@ -4,12 +4,7 @@ import ReactDOM from 'react-dom'
 const Welcome = (props) =>{
 
     const[invisible, setInvisible] = useState('invisible')
-
-    const leaveMe = (e)=>{
-        if(e.target.className==="modal"){
-            props.history.push('/')
-        }
-    }
+    
     const endVideo = ()=>{
         props.history.push('/solve')
     }

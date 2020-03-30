@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 const Docs = (props) =>{
 
     const leaveMe = (e)=>{
-        if(e.target.className==="modal"){
+        if(e.target.className==="modal"&&localStorage.getItem('sudoku-docs')==='done'){
             props.history.push('/')
         }
     }
@@ -15,10 +15,11 @@ const Docs = (props) =>{
         localStorage.setItem('sudoku-dontleave','dontleave')
         if(localStorage.getItem('sudoku-docs')==='done'){
             setLink(true)
-        }else{
-            localStorage.setItem('sudoku-docs','done')
         }
     })
+    const setItDone = ()=>{
+        localStorage.setItem('sudoku-docs','done')
+    }
     return ReactDOM.createPortal(
         <div className="modal" onClick={leaveMe}>
             <div className="modal-content">
@@ -41,7 +42,7 @@ const Docs = (props) =>{
                         <h4>To read a file, type:</h4>
                         <h4>cat [file name]</h4>
                         <p>pro tip: don't forget the extention of the file (the .txt)</p>
-                        <Link to="/about" className="crossIcon" ><h3>~>More info in the about page.</h3></Link>
+                        <Link onClick={setItDone}  to="/about" className="crossIcon" ><h3>~>More info in the about page.</h3></Link>
                         <p>Good luck!</p>
                     </div>
                 </div>
