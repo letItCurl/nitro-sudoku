@@ -47,7 +47,7 @@ function Logs(props){
                     break;
                 case "ls":
                     if(directoy==="/engine/"){
-                        setShellPrompt([...shellPrompt,"engine.js readme.txt"])
+                        setShellPrompt([...shellPrompt,"engine.js readme.txt morecomands.txt"])
                     }else if(directoy==="/"){
                         setShellPrompt([...shellPrompt,"engine/"])
                     }else{
@@ -76,6 +76,11 @@ function Logs(props){
                         setShellPrompt([...shellPrompt,...["~~~⚠~~~","Head up!!!!","you are almost there 🎯","to trigger the sudoku engine,","you need to run the file engine.js","type the following command:","node engine","~~~⚠~~~"]])
                     }
                     break;
+                case "cat morecomands.txt":
+                    if(directoy==="/engine/"){
+                        setShellPrompt([...shellPrompt,...["##########","Hey, you are really good!","Here are some more commands:","to clean grid, type: clear data","to reset inital data, type: reset data","to clear this text: clear","##########"]])
+                    }
+                    break;
                 case "node engine":
                     if(directoy==="/engine/"){
                         props.checkInputAction(props.sudoku.grid)
@@ -86,7 +91,6 @@ function Logs(props){
                 case "node engine.js":
                     if(directoy==="/engine/"){
                         props.checkInputAction(props.sudoku.grid)
-                        
                     }else{
                         setShellPrompt([...shellPrompt,"internal/modules/cjs/loader.js:985 Error: Cannot find module 'engine'"])
                     }
@@ -103,6 +107,13 @@ function Logs(props){
                 case "reset data":
                     props.resetDataAction()
                     break;
+                case "pwd":
+                    setShellPrompt([...shellPrompt,directoy])
+                    break;
+                case "whoami":
+                    setShellPrompt([...shellPrompt,"letItCurl"])
+                    break;
+                    
                 default: setShellPrompt([...shellPrompt,"bash: command "+e.target.value.replace("cd","")+" don't exist in this system"])
             }
             setUserInput("")

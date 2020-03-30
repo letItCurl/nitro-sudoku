@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AboutLink from './links/aboutLink'
 import LogoLink from './links/logoLink'
 import SolveLink from './links/solveLink'
@@ -17,14 +17,25 @@ function Navbar(props){
     light: "solar",
     solar: "dark"
   })
-  const [currentTheme, SetCurrentTheme] = useState('dark')
+  const [currentTheme, SetCurrentTheme] = useState('')
   const [hideLink, setHideLink] = useState(['block','none','none'])
+
+  useEffect(()=>{
+    if(localStorage.getItem('sudoku-theme')){
+      SetCurrentTheme(localStorage.getItem("sudoku-theme"))
+      document.body.classList.add(localStorage.getItem("sudoku-theme"))
+    }else if(localStorage.getItem('sudoku-theme')===null){
+      localStorage.setItem('sudoku-theme','dark')
+      SetCurrentTheme('currentTheme')
+    }
+  })
   
   const toggleTheme = () =>{
       const next = themeMap[currentTheme];
       const bodyClass = document.body.classList
       bodyClass.remove(currentTheme);
       bodyClass.add(next);
+      localStorage.setItem('sudoku-theme',next)
       SetCurrentTheme(next);
       switch(next){
         case 'dark':
