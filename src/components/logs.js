@@ -45,7 +45,7 @@ function Logs(props){
                     break;
                 case "ls":
                     if(directoy==="/engine/"){
-                        setShellPrompt([...shellPrompt,"engine.js readme.txt morecomands.txt"])
+                        setShellPrompt([...shellPrompt,"engine.js readme.txt morecommands.txt"])
                     }else if(directoy==="/"){
                         setShellPrompt([...shellPrompt,"engine/"])
                     }else{
@@ -74,9 +74,9 @@ function Logs(props){
                         setShellPrompt([...shellPrompt,...["~~~⚠~~~","Head up!!!!","you are almost there 🎯","to trigger the sudoku engine,","you need to run the file engine.js","type the following command:","node engine","~~~⚠~~~"]])
                     }
                     break;
-                case "cat morecomands.txt":
+                case "cat morecommands.txt":
                     if(directoy==="/engine/"){
-                        setShellPrompt([...shellPrompt,...["##########","Hey, you are really good!","Here are some more commands:","to clean grid, type: clear data","to reset inital data, type: reset data","to clear this text: clear","##########"]])
+                        setShellPrompt([...shellPrompt,...["##########","Hey, you are really good!","Here are some more commands:","to clean grid, type: clear data","to reset inital data, type: reset data","to clear the initial navigation with the modal, type: clear history","to clear this text, type: clear","##########"]])
                     }
                     break;
                 case "node engine":
@@ -100,8 +100,8 @@ function Logs(props){
                     setShellPrompt([])
                     break;
                 case "clear data":
-                        props.clearDataAction()
-                        break;
+                    props.clearDataAction()
+                    break;
                 case "reset data":
                     props.resetDataAction()
                     break;
@@ -110,6 +110,9 @@ function Logs(props){
                     break;
                 case "whoami":
                     setShellPrompt([...shellPrompt,"letItCurl"])
+                    break;
+                case "clear history":
+                    localStorage.clear()
                     break;
                     
                 default: setShellPrompt([...shellPrompt,"bash: command "+e.target.value.replace("cd","")+" don't exist in this system"])
