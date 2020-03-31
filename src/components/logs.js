@@ -115,6 +115,9 @@ function Logs(props){
                 case "clear history":
                     localStorage.clear()
                     break;
+                case "change data":
+                    props.changeDataAction()
+                    break;
                     
                 default: setShellPrompt([...shellPrompt,"bash: command "+e.target.value.replace("cd","")+" don't exist in this system"])
             }
@@ -171,7 +174,8 @@ const mapDispatchToProps = (dispatch) =>{
     return {
         checkInputAction: (grid)=> {dispatch(checkInputAction(grid))},
         clearDataAction: ()=> {dispatch({type: "CLEAR_DATA"})},
-        resetDataAction: ()=> {dispatch({type: "RESET_DATA"})}
+        resetDataAction: ()=> {dispatch({type: "RESET_DATA"})},
+        changeDataAction: ()=> {dispatch({type: "CHANGE_DATA"})}
     }
   }
 

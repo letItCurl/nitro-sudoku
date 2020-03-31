@@ -1,4 +1,4 @@
-import {grid, Engine, Sudoku, ToolBox, gridClear} from 'sudoku-solver-engine'
+import {grid, Engine, Sudoku, ToolBox, gridClear, grid3} from 'sudoku-solver-engine'
 import { messageService2, messageService1 } from '../rxjs/_services';
 
 
@@ -49,6 +49,16 @@ const rootReducer = (state = sudoku, action) =>{
       state.logs = []
       state.grid = toolbox.returnData(gridClear)
       messageService1.sendMessage("triggerRender")
+      return state
+    case 'CHANGE_DATA':
+      state.logs = []
+      state.grid = toolbox.returnData(grid3)
+      messageService1.sendMessage("triggerUpdate")
+      /*
+      state.logs = []
+      state.grid = toolbox.returnData(gridClear)
+      messageService1.sendMessage("triggerUpdate")
+      */
       return state
     default:
       return state

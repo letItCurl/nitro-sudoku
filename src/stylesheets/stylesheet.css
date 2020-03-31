@@ -193,3 +193,14 @@ a{
         opacity: 0.8;
     }
   }
+  #close-video{
+    z-index: 10;
+    text-align: center;
+    position: relative;
+    color: var(--text-secondary);
+    width: 50px;
+    margin: auto;
+    border-radius: 3px;
+    transition: var(--transition-speed);
+    cursor: pointer;
+  }

@@ -31,7 +31,7 @@ const Docs = (props) =>{
                         <h3>To trigger the sudoku engine, you need to find the directory "engine/" and read the file "readme.txt" to find the next instructions.</h3>
                         <div className="log-text" id="logs-show">
                             <p className="user">{"letItCurl@52.0.14.116:~$"}
-                                <input pattern="[a-z]"  type="text"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="type commands here"/>
                             </p>
                         </div>
                         <p>*fig above: a linux console*</p>
@@ -42,7 +42,7 @@ const Docs = (props) =>{
                             <p className="user">display current position</p>
                             <p className="user">in the file tree</p>
                             <p className="user">{"letItCurl@52.0.14.116:~$"}
-                                <input pattern="[a-z]"  type="text" value="pwd"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="pwd"/>
                             </p>
                         </div>
                         <p>##############</p>
@@ -51,7 +51,7 @@ const Docs = (props) =>{
                             <p className="user">display content of</p>
                             <p className="user">current file</p>
                             <p className="user">{"letItCurl@52.0.14.116:~$"}
-                                <input pattern="[a-z]"  type="text" value="ls"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="ls"/>
                             </p>
                         </div>
                         <p>##############</p>
@@ -59,8 +59,8 @@ const Docs = (props) =>{
                         <div className="log-text" id="logs-show">
                             <p className="user">change directory</p>
                             <p className="user">{"letItCurl@52.0.14.116:~$"}
-                                <input pattern="[a-z]"  type="text" value="cd (here you put file name)"/>
-                                <input pattern="[a-z]"  type="text" value="cd engine"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="cd (here you put file name)"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="cd engine"/>
                             </p>
                         </div>
                         <p>##############</p>
@@ -68,8 +68,16 @@ const Docs = (props) =>{
                         <div className="log-text" id="logs-show">
                             <p className="user">read file</p>
                             <p className="user">{"letItCurl@52.0.14.116:~$"}
-                                <input pattern="[a-z]"  type="text" value="cat (here you put file name)"/>
-                                <input pattern="[a-z]"  type="text" value="cat readme.txt"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="cat (here you put file name)"/>
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="cat readme.txt"/>
+                            </p>
+                        </div>
+                        <p>##############</p>
+                        <h4>change data:</h4>
+                        <div className="log-text" id="logs-show">
+                            <p className="user">to change sudoku !</p>
+                            <p className="user">{"letItCurl@52.0.14.116:~$"}
+                                <input pattern="[a-z]"  type="text" readOnly={true} value="change data"/>
                             </p>
                         </div>
                         <p>##############</p>

@@ -22,15 +22,18 @@ const About = (props) =>{
                     <PerfectScrollbar className="modal-text customized-scrollbar">
                         <p>⬇ scroll down ⬇</p>
                         <h3>Hey Wazup !</h3>
-                        <p>I'm roland a.k.a letItCurl in gitHub!</p>
+                        <p>I'm Roland a.k.a letItCurl!</p>
                         <p>If you are here is beacause you are a bit more curious than the other, I like you ! (I'm saving your ip adress)</p>
                         <p>Just kidding...</p>
-                        <h3>So, what this algorithm can do ?</h3>
-                        <p>It can solve any sudoku :p</p>
+                        <h3>So, what this can do ?</h3>
+                        <h4>It can solve any sudoku :p</h4>
                         <p>Type new numbers in the grid and you will see how the program can adapt !</p>
+                        <h4>It corrects you on the fly !</h4>
                         <p>This algorithm can't do one thing: Damned Sudokus.</p>
                         <p>Those sudokus are from the devil ! basically if you want to solve one of those, you will need to guess a numbers in the grid to continue.</p>
                         <p>The current engine can't make a random guess, but it can detect that a guess is required and then it will block the resolution.</p>
+                        <h4>Why the algorithm don't start if you put random value: there a high risque to create a multiple solution sudoku.</h4>
+                        <p>But as long it is a normal sudoku, you can enter the value and solve-it !</p>
                         <h3>LINKS:</h3>
                         <a className="out-link" href="https://github.com/letItCurl/nitro-sudoku"><p>source files of this app !</p></a>
                         <a className="out-link" href="https://github.com/letItCurl/sudoku-solver-engine"><p>source files of my sudoku engine !</p></a>
