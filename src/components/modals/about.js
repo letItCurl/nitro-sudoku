@@ -33,7 +33,7 @@ const About = (props) =>{
                         <h3>LINKS:</h3>
                         <a className="out-link" href="https://github.com/letItCurl/nitro-sudoku"><p>Here is the github of the project !</p></a>
                         <a className="out-link" href="https://github.com/letItCurl/sudoku-solver-engine"><p>Here is the github of my sudoku engine ! (soon availible in npm)</p></a>
-                        <a className="out-link" href="www.linkedin.com/in/roland-lopez-developer"><p>Feel free to speak with me if you have any question ;)</p></a>
+                        <a className="out-link" href="https://linkedin.com/in/roland-lopez-developer"><p>Feel free to speak with me if you have any question ;)</p></a>
                     </div>
                 </div>
                 <Link to="/"className="crossIcon"><CrossIcon /></Link> 
