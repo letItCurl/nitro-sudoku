@@ -111,6 +111,7 @@ a{
     margin: auto;
     border-radius: 3px;
     transition: var(--transition-speed);
+    cursor: pointer;
 }
 .invisible{
     opacity: 0;
@@ -167,4 +168,28 @@ a{
 
   .display-none{
       display: none;
+  }
+  .next-btn{
+      background-color: var(--logs-color);
+      width: 130px;
+      border-radius: 5px;
+      margin: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      animation: ani 1.7s infinite;
+  }
+  @keyframes ani {
+    0% {
+        width: 130px;
+        opacity: 0.8;
+    }
+    50% {
+        width: 140px;
+        opacity: 1;
+
+    }
+    100% {
+        width: 130px;
+        opacity: 0.8;
+    }
   }

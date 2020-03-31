@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import CrossIcon from './crossIcon'
 import {Link} from 'react-router-dom'
-
+import PerfectScrollbar from 'react-perfect-scrollbar'
 const Docs = (props) =>{
 
     const leaveMe = (e)=>{
@@ -26,25 +26,61 @@ const Docs = (props) =>{
                 <div className="modal-header">
                     <h1>Docs</h1>
                 
-                    <div className="modal-text customized-scrollbar">
-                        <h4>Let's reacap why you are here:</h4>
-                        <p>You need to solve this sudoku, otherwise a nuclear war is engage. (don't ask me why)</p>
-                        <p>The linux shell let's you navigate in a tree of files and directories.</p>
-                        <p>Here, we start in the user's directory. (which is the user letItCurl)</p>
+                    <PerfectScrollbar className="modal-text customized-scrollbar">
+                        <p>⬇ scroll down ⬇</p>
                         <h3>To trigger the sudoku engine, you need to find the directory "engine/" and read the file "readme.txt" to find the next instructions.</h3>
-                        <h3>To do so, you need to use the following commands:</h3>
-                        <h4>To list files in the current directory, type:</h4>
-                        <h4>ls</h4>
-                        <h4>To change directoy type:</h4>
-                        <h4>cd [directory name]</h4>
-                        <p>example: if I found, thanks to the command "ls", a directory named "home", I can enter in the directory "home" by typing:</p>
-                        <p>cd home</p>
-                        <h4>To read a file, type:</h4>
-                        <h4>cat [file name]</h4>
-                        <p>pro tip: don't forget the extention of the file (the .txt)</p>
-                        <Link onClick={setItDone}  to="/about" className="crossIcon" ><h3>~>More info in the about page.</h3><h3>(click here)</h3></Link>
-                        <p>Good luck!</p>
-                    </div>
+                        <div className="log-text" id="logs-show">
+                            <p className="user">{"letItCurl@52.0.14.116:~$"}
+                                <input pattern="[a-z]"  type="text"/>
+                            </p>
+                        </div>
+                        <p>*fig above: a linux console*</p>
+                        <h3>CHEAT-SHEET</h3>
+                        <p>##############</p>
+                        <h4>pwd:</h4>
+                        <div className="log-text" id="logs-show">
+                            <p className="user">display current position</p>
+                            <p className="user">in the file tree</p>
+                            <p className="user">{"letItCurl@52.0.14.116:~$"}
+                                <input pattern="[a-z]"  type="text" value="pwd"/>
+                            </p>
+                        </div>
+                        <p>##############</p>
+                        <h4>ls:</h4>
+                        <div className="log-text" id="logs-show">
+                            <p className="user">display content of</p>
+                            <p className="user">current file</p>
+                            <p className="user">{"letItCurl@52.0.14.116:~$"}
+                                <input pattern="[a-z]"  type="text" value="ls"/>
+                            </p>
+                        </div>
+                        <p>##############</p>
+                        <h4>cd:</h4>
+                        <div className="log-text" id="logs-show">
+                            <p className="user">change directory</p>
+                            <p className="user">{"letItCurl@52.0.14.116:~$"}
+                                <input pattern="[a-z]"  type="text" value="cd (here you put file name)"/>
+                                <input pattern="[a-z]"  type="text" value="cd engine"/>
+                            </p>
+                        </div>
+                        <p>##############</p>
+                        <h4>cat:</h4>
+                        <div className="log-text" id="logs-show">
+                            <p className="user">read file</p>
+                            <p className="user">{"letItCurl@52.0.14.116:~$"}
+                                <input pattern="[a-z]"  type="text" value="cat (here you put file name)"/>
+                                <input pattern="[a-z]"  type="text" value="cat readme.txt"/>
+                            </p>
+                        </div>
+                        <p>##############</p>
+                        <p>Challenge for you: there is more commands in the file: morecommands.txt</p>
+                        <p>try to read that file ;)</p>
+                        {   (()=>{if(!link){
+                        return <Link onClick={setItDone}  to="/about"><h3 className="next-btn">~>NEXT</h3></Link>
+                            }      
+                        })()        
+                        }
+                    </PerfectScrollbar>
                 </div>
                 {   (()=>{if(link){
                         return <Link to="/"className="crossIcon"><CrossIcon /></Link> 

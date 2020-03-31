@@ -197,28 +197,7 @@
       margin-bottom: 5px;
       padding-top: 0;
     }
-    @keyframes ani {
-      0% {
-        bottom: 30px;
-      }
-      50% {
-        bottom: 33px;
-      }
-      100% {
-        bottom: 30px;
-      }
-    }
-      @keyframes anifast {
-        0% {
-          bottom: 30px;
-        }
-        50% {
-          bottom: 45px;
-        }
-        100% {
-          bottom: 30px;
-        }
-    }
+    
     
   }
 

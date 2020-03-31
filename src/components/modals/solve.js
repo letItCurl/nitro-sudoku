@@ -10,46 +10,35 @@ const Solve = (props) =>{
             props.history.push('/')
         }
     }
-    const [link, setLink] = useState(false)
-    useEffect(()=>{
-        if(localStorage.getItem('sudoku-solve')==='done'){
-            setLink(true)
+    const[invisible, setInvisible] = useState('invisible')
+    const skipDisplay = ()=>{
+        if(invisible===invisible){
+            setTimeout(()=>{
+                setInvisible('')
+            },3000)
         }
-    })
-    const setItDone = ()=>{
+    }
+    
+    const endVideo = ()=>{
+        props.history.push('/docs')
         localStorage.setItem('sudoku-solve','done')
     }
-
+    const skip = ()=>{
+        props.history.push('/docs')
+        localStorage.setItem('sudoku-solve','done')
+    }
     return ReactDOM.createPortal(
         <div className="modal" onClick={leaveMe}>
-            <div className="modal-content">
-                <div className="modal-header">
-                    <h1>solve</h1>
-                    <div className="modal-text customized-scrollbar">
-                        <h4>To use this sudoku solver,</h4>
-                        <h4>you will have to do it from a linux shell !</h4>
-                        <p>The linux shell is the way to speak to the linux kernel, and the linux kernel is what handles low level programs as memory manager and so forth.</p>
-                        <h4>Here the linux shell is:</h4>
-                        <div className="log-text" id="logs-show" >
-                            <p className="user" >{"letItCurl@52.0.14.116:~$"}
-                                <input pattern="[a-z]"type="text" placeholder="You can type things here !"/>
-                            </p>
-                        </div>
-                        <p>Basically, with this text box, you can speak with the algorithm that solve sudokus !</p>
-                        <p>You thougth that this would be easy as a button click ?! hell no!</p>
-                        <h4>This time, I want you, to get hand on this an try to understand what i'm doing all day behind my screen.</h4>
-                        <p>This journey start with, docs, yhea. Read it carfully, all info is there.</p>
-                        <Link to="/docs" onClick={setItDone}><h2>~>Go to docs !</h2><h2>(click here)</h2></Link>
-                        <h4>All these pop-ups can be found in the navigation bar, check-it out there is a surprise ;)</h4>
-                    </div>
+            <div className="modal-content video-content">
+                <div className="modal-header" >
+                    <h1 onClick={skip}>Solve</h1>
+                    <p onClick={skip} id="skip" className={invisible}>Skip...</p>
                 </div>
-                {   (()=>{if(link){
-                        return <Link to="/"className="crossIcon"><CrossIcon /></Link> 
-                            }      
-                        })()        
-                }
-            </div>  
-            
+                <video controls className="welcome-video" onEnded={endVideo} onPlaying={skipDisplay}>
+                    <source src="https://res.cloudinary.com/duydvdaxd/video/upload/v1585649522/Vue-Sprint/Nirtro_Sudoku_-_Opera_2020-03-31_11-30-16_i2i8lr.mp4"type="video/mp4"/>
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </div>
         </div>,
         document.querySelector('#modal')
     )

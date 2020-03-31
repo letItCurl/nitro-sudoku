@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import Content from './components/content'
-
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import About from './components/modals/about'
 import Docs from './components/modals/docs'
 import Solve from './components/modals/solve'

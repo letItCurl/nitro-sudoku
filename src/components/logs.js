@@ -3,8 +3,7 @@ import '../stylesheets/logs.css'
 import {connect} from 'react-redux'
 import { messageService1, messageService2,messageLogsToContent} from '../rxjs/_services';
 import {checkInputAction} from '../actions/sudokuActions'
-//import 'react-perfect-scrollbar/dist/css/styles.css';
-//import PerfectScrollbar from 'react-perfect-scrollbar'
+
 
 function Logs(props){
 
