@@ -46,7 +46,7 @@ const Solve = (props) =>{
                     <p onClick={skip} id="skip" className={invisible}>Skip...</p>
                 </div>
                 <video controls className="welcome-video" onEnded={endVideo} onPlaying={skipDisplay}>
-                    <source src="https://res.cloudinary.com/duydvdaxd/video/upload/v1585649522/Vue-Sprint/Nirtro_Sudoku_-_Opera_2020-03-31_11-30-16_i2i8lr.mp4"type="video/mp4"/>
+                    <source src="https://res.cloudinary.com/duydvdaxd/video/upload/v1585663805/Vue-Sprint/solveVideo_tws6re.mp4"type="video/mp4"/>
                     Sorry, your browser doesn't support embedded videos.
                 </video>
                 <p onClick={closeThis} className={skipDisplayClose} id="close-video"><CrossIcon/></p>
