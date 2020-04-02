@@ -170,6 +170,7 @@ a{
       display: none;
   }
   .next-btn{
+      text-align: center;
       background-color: var(--logs-color);
       width: 130px;
       border-radius: 5px;
@@ -177,6 +178,7 @@ a{
       margin-top: 10px;
       margin-bottom: 10px;
       animation: ani 1.7s infinite;
+      cursor: pointer;
   }
   @keyframes ani {
     0% {

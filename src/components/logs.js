@@ -139,15 +139,17 @@ function Logs(props){
                             messageLogsToContent.sendMessage("SHOW-FINAL")
                         },1500) 
                     }
-                }, 98*ind)
+                }, 55*ind)
             })
         }
 
+        const forceThis = ()=>{
+            props.checkInputAction(props.sudoku.grid)
+        }
         
 
     return(
         <div className="logs-container" id="logs-container">
-       
             <div className="log-text" id="logs">
                 {
                     shellPrompt.map((val,ind)=>{
@@ -160,6 +162,7 @@ function Logs(props){
                     <input pattern="[a-z]" onChange={consoleInput} type="text" disabled={lock} value={userInput}/>
                 </p>
             </div>
+            
     
         </div>
     )
