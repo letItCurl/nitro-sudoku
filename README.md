@@ -1,3 +1,8 @@
 # Nitro sudoku react app
 
-***Currently in development***
+DONE !
+
+You can test this at:
+https://sudoku-binchmarking.firebaseapp.com/
+
+Enjoy !
