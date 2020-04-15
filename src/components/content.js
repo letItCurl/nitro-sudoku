@@ -14,7 +14,7 @@ function Content(props) {
     useEffect(()=>{
       var subscription = messageLogsToContent.getMessage().subscribe(message => {
         if (message==="SHOW-FINAL"&&localStorage.getItem('sudoku-conclusion')!=='done')
-        {props.history.push('/conclusion')
+        {//props.history.push('/conclusion')
         localStorage.setItem('sudoku-conclusion', 'done')
       }
          
@@ -43,7 +43,7 @@ function Content(props) {
         <Navbar/>
         <main>
           <Link to="/welcome" id="title-link"><h1 id="title">Welcome !</h1></Link>
-          <p id="title">Hehe. Got Somthing for you 🎁</p>
+          <p id="title">Hehe. Got Something for you 🎁</p>
           <div className="tracker-engine">
             <Controls/>
             <Grid sudoku={props.state}/>
