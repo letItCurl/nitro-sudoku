@@ -33,7 +33,7 @@ function Controls (props){
         <div className="logs-container" id="controls-container">    
                 <h1 className="control-headings">Sudoku Controller</h1>
                 <div className="btn-group">
-                    <button className="btn-action" disabled={lock} onClick={start}>Start</button>
+                    <a href="#logs-container"><button className="btn-action" disabled={lock} onClick={start}>Start</button></a>
                     <button className="btn-action" disabled={lock} onClick={clear}>Clear</button>
                     <button className="btn-action" disabled={lock} onClick={change}>Change</button>
                 </div>
