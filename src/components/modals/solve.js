@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import {Link} from 'react-router-dom'
 import CrossIcon from './crossIcon'
 
 const Solve = (props) =>{
@@ -14,7 +13,7 @@ const Solve = (props) =>{
         props.history.push('/')
     }
     const[invisible, setInvisible] = useState('invisible')
-    const[skipDisplayClose, SetSkipDisplayClose] = useState('invisible')
+    const[skipDisplayClose, SetSkipDisplayClose] = useState('') // can change this
 
     useEffect(()=>{
         if(localStorage.getItem('sudoku-solve')==='done'){

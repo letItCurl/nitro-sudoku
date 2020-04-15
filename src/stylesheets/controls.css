@@ -1,0 +1,37 @@
+
+.btn-group{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: auto;
+    top: calc(50% - 50px);
+}
+
+.btn-action{
+    border-radius: 15px;
+    background-color: var(--bg-body); /* Green */
+    border: 3px solid var(--bg-modal);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Open Sans';
+    transition: var(--transition-speed);
+    font-weight: 500;
+}
+.btn-action:hover{
+    background-color: #df49a6; /* Green */
+    transform: scale(1.15);
+}
+.control-headings{
+    color: var(--text-primary);
+    font-weight: lighter;
+    position: relative;
+    top: 20%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+}

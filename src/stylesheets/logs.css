@@ -44,6 +44,9 @@
 #omg{
     max-height: 400px;
 }
+#controls-container{
+    margin-right: 10px;
+}
 @media only screen and (max-width: 950px) {
     .logs-container{
         max-width: 400px;
@@ -52,9 +55,17 @@
         height: 145px;
         margin-bottom: 10px;
     }
+    #controls-container{
+        max-width: 400px;
+        width: 100%;
+        margin: auto;
+        height: 145px;
+        margin-top: 10px;
+    }
     .log-text{
         font-size: 0.8em;
     }
+    
  }
  @media only screen and (max-width: 400px) {
     .logs-container{
@@ -62,6 +73,7 @@
         width: 100%;
         margin: auto;
         margin-bottom: 10px;
+        margin-top: 10px;
         margin-top: 77px;
     }
     .log-text{

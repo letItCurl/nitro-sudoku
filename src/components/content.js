@@ -4,8 +4,8 @@ import {messageLogsToContent} from '../rxjs/_services';
 import Navbar from './navbar/navbar'
 import Grid from './grid/grid'
 import Logs from './logs'
+import Controls from './controls'
 import {Link} from 'react-router-dom'
-
 import {connect} from 'react-redux'
 
 function Content(props) {
@@ -45,7 +45,7 @@ function Content(props) {
           <Link to="/welcome" id="title-link"><h1 id="title">Welcome !</h1></Link>
           <p id="title">Hehe. Got Somthing for you 🎁</p>
           <div className="tracker-engine">
-            
+            <Controls/>
             <Grid sudoku={props.state}/>
             <Logs/>
           </div>

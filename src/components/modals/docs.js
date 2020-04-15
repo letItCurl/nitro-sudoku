@@ -10,7 +10,7 @@ const Docs = (props) =>{
             props.history.push('/')
         }
     }
-    const [link, setLink] = useState(false)
+    const [link, setLink] = useState(true) // or true
     useEffect(()=>{
         localStorage.setItem('sudoku-dontleave','dontleave')
         if(localStorage.getItem('sudoku-docs')==='done'){
