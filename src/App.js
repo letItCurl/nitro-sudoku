@@ -22,6 +22,7 @@ function App() {
   
   return (
     <BrowserRouter>
+        <span id="lookthatlogstream"></span>
         <Route path='/about' component={About}/>
         <Route path='/docs' component={Docs}/>
         <Route path='/solve' component={Solve}/>
@@ -30,7 +31,6 @@ function App() {
         <Route path='/conclusion' component={Conclusion}/>
         <Route path='/congrats' component={Congrats}/>
         <Route path='/' component={Content}/>
-        
     </BrowserRouter>
   );
 }

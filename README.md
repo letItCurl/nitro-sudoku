@@ -11,10 +11,12 @@ https://sudoku-binchmarking.firebaseapp.com/
 #Some features:
 
 - Solve any valid sudoku.
-- Check inputs while they are set.
-- 5 preset sudokus.
-- CLI Build in the app.
+- Check inputs while they are puted in the grid.
+- 5 preset of sudokus.
+- CLI in the browser.
 - Fully responsive.
-- Logs directly connected to the program status.
+- Logs are directly connected to the program status.
+- The log stream doesn't lock the navigation of the app.
+- When the engine is solving, all API inputs are locked.
 
 Enjoy !
