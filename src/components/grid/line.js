@@ -56,13 +56,14 @@ const Line = (props) => {
         props.setSudokuNumber(focus[0],focus[1],focus[2])
         //focus the row
         if(focus[1]==props.index){
+            /*
             for(let number of currentLine){
                 //number.classList.add('focus')
                 setTimeout(()=>{
                     //number.classList.remove('focus')
                 }, 700)
             }
-
+            */
             //set it to done
             for(let number of currentLine){ 
                 if(number.id==focus[0]){
@@ -75,6 +76,7 @@ const Line = (props) => {
                 }
             }
         }
+        /*
         //focus the columns
         for(let number of currentLine){
             if(number.id==focus[0]){
@@ -84,6 +86,7 @@ const Line = (props) => {
                 }, 700)
             }
         }
+        */
     }
     
     return (

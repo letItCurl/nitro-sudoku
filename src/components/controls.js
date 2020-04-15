@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {checkInputAction} from '../actions/sudokuActions'
 import {connect} from 'react-redux'
+import {messageService2} from '../rxjs/_services';
 
 import '../stylesheets/controls.css'
 
@@ -8,20 +9,23 @@ function Controls (props){
 
     const [lock, setLock] = useState(false)
     
-    function logThis(){
-        console.log("SRCYGVUHBIJ")
-    }
+    useEffect(()=>{
+        var subscription = messageService2.getMessage().subscribe(message => {
+            if (message==="--> SUDOKU VALIDATED ✅"){setLock(true)}
+            if (message==="UNLOCK"){setLock(false);}
+        });
+        return () =>{
+            subscription.unsubscribe();
+        }
+    })
 
     function start(){
-        console.log(props.sudoku.grid)
         props.checkInputAction(props.sudoku.grid)
     }
     function clear(){
-        console.log(props.sudoku.grid)
         props.clearDataAction()
     }
     function change(){
-        console.log(props.sudoku.grid)
         props.changeDataAction()
     }
 
@@ -29,9 +33,9 @@ function Controls (props){
         <div className="logs-container" id="controls-container">    
                 <h1 className="control-headings">Sudoku Controller</h1>
                 <div className="btn-group">
-                    <button class="btn-action" disabled={lock} onClick={start}>Start</button>
-                    <button class="btn-action" disabled={lock} onClick={clear}>Clear</button>
-                    <button class="btn-action" disabled={lock} onClick={change}>Change</button>
+                    <button className="btn-action" disabled={lock} onClick={start}>Start</button>
+                    <button className="btn-action" disabled={lock} onClick={clear}>Clear</button>
+                    <button className="btn-action" disabled={lock} onClick={change}>Change</button>
                 </div>
         </div>
     )

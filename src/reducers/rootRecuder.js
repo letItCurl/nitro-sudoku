@@ -9,7 +9,7 @@ sudoku.logs = []
 sudoku.id = 0
 
 const rootReducer = (state = sudoku, action) =>{
-  console.log(action)
+  //console.log(action)
   switch(action.type){
     case 'REPLACE_LINE':
       state.grid[action.y] = action.line
