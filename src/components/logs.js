@@ -6,7 +6,7 @@ import {checkInputAction} from '../actions/sudokuActions'
 
 
 function Logs(props){
-
+    
     const [userInput, setUserInput] = useState([""])
     const [shellPrompt, setShellPrompt] = useState(["waiting for ssh connection...","Logged in as letItCurl"])
     const [directoy, setDirectoy] = useState('/')
@@ -21,7 +21,7 @@ function Logs(props){
         var subscription = messageService2.getMessage().subscribe(message => {
             if (Array.isArray(message)) {setShellPrompt([...shellPrompt,...message])}
             else if (message==="--> SUDOKU VALIDATED ✅"){setLock(true);streamLogs()}
-            else if (message==="UNLOCK_CONSOLE"){setLock(false)}    
+            else if (message==="UNLOCK_CONSOLE"){setLock(false)}
         });
         return () =>{
             subscription.unsubscribe();

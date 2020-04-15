@@ -1,13 +1,12 @@
-import {grid, Engine, Sudoku, ToolBox, gridClear, grid3} from 'sudoku-solver-engine'
+import {grid, Engine, Sudoku, ToolBox, gridClear, grid3, grid4, grid5, grid6} from 'sudoku-solver-engine'
 import { messageService2, messageService1 } from '../rxjs/_services';
-
-
 
 const toolbox = new ToolBox()
 var grid2 = toolbox.returnData(grid)
 const sudoku = new Sudoku(grid2)
 
 sudoku.logs = []
+sudoku.id = 0
 
 const rootReducer = (state = sudoku, action) =>{
   console.log(action)
@@ -52,7 +51,25 @@ const rootReducer = (state = sudoku, action) =>{
       return state
     case 'CHANGE_DATA':
       state.logs = []
-      state.grid = toolbox.returnData(grid3)
+      state.id ++
+      switch(state.id){
+        case 0:
+          state.grid = toolbox.returnData(grid)
+          break;
+        case 1:
+          state.grid = toolbox.returnData(grid3)
+          break;
+        case 2:
+          state.grid = toolbox.returnData(grid4)
+          break;
+        case 3:
+          state.grid = toolbox.returnData(grid5)
+          break;
+        case 4:
+          state.grid = toolbox.returnData(grid6)
+          state.id = 0
+          break;
+      }
       messageService1.sendMessage("triggerUpdate")
       /*
       state.logs = []
