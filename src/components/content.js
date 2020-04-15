@@ -19,6 +19,7 @@ function Content(props) {
       }
          
       });
+      /*
         if(video===null){
             localStorage.setItem('sudoku-welcome', 'done');
             setVideo(localStorage.getItem('sudoku-welcome'))
@@ -27,6 +28,7 @@ function Content(props) {
         return () =>{
           subscription.unsubscribe();
       }
+      */
     })
 
     const whatisthis = (e)=>{
@@ -43,6 +45,7 @@ function Content(props) {
           <Link to="/welcome" id="title-link"><h1 id="title">Welcome !</h1></Link>
           <p id="title">Hehe. Got Somthing for you 🎁</p>
           <div className="tracker-engine">
+            
             <Grid sudoku={props.state}/>
             <Logs/>
           </div>
