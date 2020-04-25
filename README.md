@@ -1,26 +1,3 @@
-# Nitro sudoku react app
-
-This react app show how a sudoku can be solved with a program on the browser.
-
-Here is the engine-solver:
-https://github.com/letItCurl/sudoku-solver-engine
-
-You can test this at:
-https://sudoku-binchmarking.firebaseapp.com/
-
-#Some features:
-
-- Solve any valid sudoku.
-- Check inputs while they are puted in the grid.
-- 5 preset of sudokus.
-- CLI in the browser.
-- Fully responsive.
-- Logs are directly connected to the program status.
-- The log stream doesn't lock the navigation of the app.
-- When the engine is solving, all API inputs are locked.
-
-Enjoy !
-
 <p align="center">
   <a style="Color: #f694ff;" href="https://sudoku-binchmarking.firebaseapp.com/"><img src="https://res.cloudinary.com/duydvdaxd/image/upload/v1587807194/Vue-Sprint/SUDOKU_IN_REACT_mvivwj.png"/></a>
 </p>
@@ -29,29 +6,31 @@ Enjoy !
   <a style="Color: #f694ff;" href="https://sudoku-binchmarking.firebaseapp.com/"><img src="https://res.cloudinary.com/duydvdaxd/image/upload/v1587804075/Vue-Sprint/nitro_sudoku_git_g89lqm.gif"/></a>
 </p>
 
-<p align="center" ><a style="Color: #f694ff;" href="https://gameoflife-ts.web.app/" >Click here to try it !</a></p>
+<p align="center" ><a style="Color: #f694ff;" href="https://sudoku-binchmarking.firebaseapp.com/" >Click here to try it !</a></p>
 
 # Features [![](https://img.shields.io/badge/autor-letItCurl-red.svg)](https://www.linkedin.com/in/roland-lopez-developer/?locale=en_US)
 
-- Drag and drop on desktop.
-- Hold touch event on mobile.
-- Infinite map generation.
-- Can spwan items during the playing action.
-- Map length resized in function of the view port.
-- Rewind generations.
-- Go backward and frontward step by step.
+- Solve any valid sudoku.
+- Detect invalid sudokus.
+- Check inputs while they are puted in the grid.
+- 5 preset of sudokus.
+- CLI in the browser.
+- Fully responsive.
+- Logs are directly connected to the program status.
+- The log stream doesn't lock the navigation of the app.
+- When the engine is solving, all API inputs are locked.
 
 # Technical stack
-- Vue.Js / Ts template
-- Canvas
-- VueX
-- RxJs
-- Vue touch events
-- Firebase Hosting
+- React.js
+- RxJS
+- Redux
+- Webpack
+- Babel
+- Eslint
 
 # About
 Project made from scratch by me, for you, with <3. 
-It uses <a href="https://github.com/letItCurl/gol-engine">a custom node_module<a/>, developed by me, coded also in Typescript.
+It uses <a href="https://github.com/letItCurl/sudoku-solver-engine">a custom node_module<a/>, developed by me, coded also in Typescript.
 <table style="border: none;">
   <tr>
     <td>
