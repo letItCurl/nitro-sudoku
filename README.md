@@ -6,7 +6,7 @@
   <a style="Color: #f694ff;" href="https://sudoku-binchmarking.firebaseapp.com/"><img src="https://res.cloudinary.com/duydvdaxd/image/upload/v1587804075/Vue-Sprint/nitro_sudoku_git_g89lqm.gif"/></a>
 </p>
 
-<p align="center" ><a style="Color: #f694ff;" href="https://sudoku-binchmarking.firebaseapp.com/" >Click here to try it !</a></p>
+<p align="center" ><a style="Color: #f694ff;" href="https://sudoku-binchmarking.firebaseapp.com/" >Click here to try it out!</a></p>
 
 # Features [![](https://img.shields.io/badge/autor-letItCurl-red.svg)](https://www.linkedin.com/in/roland-lopez-developer/?locale=en_US)
 
